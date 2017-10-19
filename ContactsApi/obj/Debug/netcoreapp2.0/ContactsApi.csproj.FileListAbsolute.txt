@@ -9,3 +9,14 @@ C:\Users\simeon.stoykov\Desktop\ContactsApi\ContactsApi\obj\Debug\netcoreapp2.0\
 C:\Users\simeon.stoykov\Desktop\ContactsApi\ContactsApi\obj\Debug\netcoreapp2.0\ContactsApi.AssemblyInfo.cs
 C:\Users\simeon.stoykov\Desktop\ContactsApi\ContactsApi\obj\Debug\netcoreapp2.0\ContactsApi.dll
 C:\Users\simeon.stoykov\Desktop\ContactsApi\ContactsApi\obj\Debug\netcoreapp2.0\ContactsApi.pdb
+C:\Users\Simeon\Desktop\ContactsApi\ContactsApi\bin\Debug\netcoreapp2.0\ContactsApi.deps.json
+C:\Users\Simeon\Desktop\ContactsApi\ContactsApi\bin\Debug\netcoreapp2.0\ContactsApi.runtimeconfig.json
+C:\Users\Simeon\Desktop\ContactsApi\ContactsApi\bin\Debug\netcoreapp2.0\ContactsApi.runtimeconfig.dev.json
+C:\Users\Simeon\Desktop\ContactsApi\ContactsApi\bin\Debug\netcoreapp2.0\ContactsApi.dll
+C:\Users\Simeon\Desktop\ContactsApi\ContactsApi\bin\Debug\netcoreapp2.0\ContactsApi.pdb
+C:\Users\Simeon\Desktop\ContactsApi\ContactsApi\obj\Debug\netcoreapp2.0\ContactsApi.csprojResolveAssemblyReference.cache
+C:\Users\Simeon\Desktop\ContactsApi\ContactsApi\obj\Debug\netcoreapp2.0\ContactsApi.csproj.CoreCompileInputs.cache
+C:\Users\Simeon\Desktop\ContactsApi\ContactsApi\obj\Debug\netcoreapp2.0\ContactsApi.AssemblyInfoInputs.cache
+C:\Users\Simeon\Desktop\ContactsApi\ContactsApi\obj\Debug\netcoreapp2.0\ContactsApi.AssemblyInfo.cs
+C:\Users\Simeon\Desktop\ContactsApi\ContactsApi\obj\Debug\netcoreapp2.0\ContactsApi.dll
+C:\Users\Simeon\Desktop\ContactsApi\ContactsApi\obj\Debug\netcoreapp2.0\ContactsApi.pdb

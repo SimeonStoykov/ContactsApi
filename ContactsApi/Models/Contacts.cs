@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ContactsApi.Models
 {
     public class Contacts
     {
+        [MinLength(3)]
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool IsFamilyMember { get; set; }
