@@ -39,6 +39,12 @@ namespace ContactsApi.Controllers
             {
                 return BadRequest();
             }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             ContactsRepo.Add(item);
             return CreatedAtRoute("GetContacts", new { Controller = "Contacts", id = item.MobilePhone }, item);
         }
