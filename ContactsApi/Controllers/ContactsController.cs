@@ -2,6 +2,7 @@
 using ContactsApi.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ContactsApi.Controllers
 {
@@ -16,24 +17,25 @@ namespace ContactsApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Contacts> GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            return ContactsRepo.GetAll();
+            var contactList = await ContactsRepo.GetAll();
+            return Ok(contactList);
         }
 
         [HttpGet("{id}", Name = "GetContacts")]
-        public IActionResult GetById(string id)
+        public async Task<IActionResult> GetById(string id)
         {
-            var item = ContactsRepo.Find(id);
+            var item = await ContactsRepo.Find(id);
             if (item == null)
             {
                 return NotFound();
             }
-            return new ObjectResult(item);
+            return Ok(item);
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Contacts item)
+        public async Task<IActionResult> Create([FromBody] Contact item)
         {
             if (item == null)
             {
@@ -44,31 +46,31 @@ namespace ContactsApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            ContactsRepo.Add(item);
+            await ContactsRepo.Add(item);
             return CreatedAtRoute("GetContacts", new { Controller = "Contacts", id = item.MobilePhone }, item);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(string id, [FromBody] Contacts item)
+        public async Task<IActionResult> Update(string id, [FromBody] Contact item)
         {
             if (item == null)
             {
                 return BadRequest();
             }
-            var contactObj = ContactsRepo.Find(id);
+            var contactObj = await ContactsRepo.Find(id);
             if (contactObj == null)
             {
                 return NotFound();
             }
-            ContactsRepo.Update(item);
-            return new NoContentResult();
+            await ContactsRepo.Update(item);
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public void Delete(string id)
+        public async Task<IActionResult> Delete(string id)
         {
-            ContactsRepo.Remove(id);
+            await ContactsRepo.Remove(id);
+            return NoContent();
         }
     }
 }

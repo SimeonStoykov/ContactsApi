@@ -1,14 +1,15 @@
 ﻿using ContactsApi.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ContactsApi.Repository
 {
     public interface IContactsRepository
     {
-        void Add(Contacts item);
-        IEnumerable<Contacts> GetAll();
-        Contacts Find(string key);
-        void Remove(string Id);
-        void Update(Contacts item);
+        Task Add(Contact item);
+        Task<IEnumerable<Contact>> GetAll();
+        Task<Contact> Find(string key);
+        Task Remove(string Id);
+        Task Update(Contact item);
     }
 }

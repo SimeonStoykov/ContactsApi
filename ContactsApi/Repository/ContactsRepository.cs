@@ -1,40 +1,52 @@
-﻿using ContactsApi.Models;
+﻿using ContactsApi.Contexts;
+using ContactsApi.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ContactsApi.Repository
 {
     public class ContactsRepository : IContactsRepository
     {
-        static List<Contacts> ContactsList = new List<Contacts>();
+        private ContactsContext _context;
 
-        public void Add(Contacts item)
+        public ContactsRepository(ContactsContext context)
         {
-            ContactsList.Add(item);
+            _context = context;
         }
 
-        public Contacts Find(string key)
+        public async Task Add(Contact item)
         {
-            return ContactsList
-                .Where(e => e.MobilePhone.Equals(key))
-                .FirstOrDefault();
+            await _context.Contacts.AddAsync(item);
+            await _context.SaveChangesAsync();
         }
 
-        public IEnumerable<Contacts> GetAll()
+        public async Task<Contact> Find(string id)
         {
-            return ContactsList;
+            return await _context.Contacts
+                .Where(e => e.Id.Equals(id))
+                .SingleOrDefaultAsync();
         }
 
-        public void Remove(string Id)
+        public async Task<IEnumerable<Contact>> GetAll()
         {
-            var itemToRemove = ContactsList.SingleOrDefault(r => r.MobilePhone == Id);
+            return await _context.Contacts.ToListAsync();
+        }
+
+        public async Task Remove(string Id)
+        {
+            var itemToRemove = await _context.Contacts.SingleOrDefaultAsync(r => r.MobilePhone == Id);
             if (itemToRemove != null)
-                ContactsList.Remove(itemToRemove);
+            {
+                _context.Contacts.Remove(itemToRemove);
+                await _context.SaveChangesAsync();
+            }
         }
 
-        public void Update(Contacts item)
+        public async Task Update(Contact item)
         {
-            var itemToUpdate = ContactsList.SingleOrDefault(r => r.MobilePhone == item.MobilePhone);
+            var itemToUpdate = await _context.Contacts.SingleOrDefaultAsync(r => r.MobilePhone == item.MobilePhone);
             if (itemToUpdate != null)
             {
                 itemToUpdate.FirstName = item.FirstName;
@@ -46,6 +58,7 @@ namespace ContactsApi.Repository
                 itemToUpdate.MobilePhone = item.MobilePhone;
                 itemToUpdate.DateOfBirth = item.DateOfBirth;
                 itemToUpdate.AnniversaryDate = item.AnniversaryDate;
+                await _context.SaveChangesAsync();
             }
         }
     }

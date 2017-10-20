@@ -3,8 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ContactsApi.Models
 {
-    public class Contacts
+    public class Contact
     {
+        public int Id { get; set; }
+
         [Required, MinLength(2)]
         public string FirstName { get; set; }
 
